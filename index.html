@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Archive Scientifique - Shiro Willver</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00; /* vert informatique */
+      font-family: "Courier New", monospace;
+      padding: 20px;
+    }
+    #content {
+      white-space: pre-wrap;
+      display: none;
+    }
+    #password-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+    }
+    input[type="password"] {
+      padding: 10px;
+      font-size: 18px;
+      margin-bottom: 10px;
+      background-color: black;
+      color: #00FF00;
+      border: 2px solid #00FF00;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: black;
+      color: #00FF00;
+      border: 2px solid #00FF00;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="password-container">
+  <h1>Archive Scientifique - Freddy Fazbear's Pizza</h1>
+  <p>Entrez le mot de passe pour accéder aux archives :</p>
+  <input type="password" id="password">
+  <button onclick="checkPassword()">Entrer</button>
+  <p id="error" style="color:red; display:none;">Mot de passe incorrect</p>
+</div>
+
+<div id="content">
+Shiro Willver et sa famille visitèrent la célèbre Freddy Fazbear’s Pizza le 22 mars 1976.  
+Mais Shiro disparut mystérieusement dans l’enceinte de la pizzeria.  
+Les recherches officielles n’ont jamais permis de le retrouver.  
+Aujourd’hui, les témoins rapportent que l’âme de Shiro reste prisonnière de la pizzeria.  
+Selon les légendes, il veille sur les enfants perdus, les guidant à travers les couloirs sombres et les attractions abandonnées…
+</div>
+
+<script>
+  const password = "4782";
+  const content = document.getElementById("content");
+  const passwordInput = document.getElementById("password");
+  const errorMsg = document.getElementById("error");
+
+  function checkPassword() {
+    if(passwordInput.value === password) {
+      document.getElementById("password-container").style.display = "none";
+      content.style.display = "block";
+      showText();
+    } else {
+      errorMsg.style.display = "block";
+    }
+  }
+
+  const text = content.innerText;
+  content.innerText = "";
+  let i = 0;
+
+  function showText() {
+    if(i < text.length) {
+      content.innerText += text.charAt(i);
+      i++;
+      setTimeout(showText, 50); // vitesse d'affichage
+    }
+  }
+</script>
+
+</body>
+</html>
